@@ -22,6 +22,16 @@ body {
   margin: -15px 0px 0px 10px;
 }
 
+.state-flag {
+  width: 35px;
+  height: auto;
+}
+
+.state-title {
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (min-width: 780px) {
   .title {
     display: flex;

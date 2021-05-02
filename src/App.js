@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
+import State from "./State";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       states: [],
+      loaded: false,
     };
   }
 
@@ -13,7 +15,7 @@ class App extends React.Component {
     fetch("https://covid19-brazil-api.now.sh/api/report/v1")
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ states: data });
+        this.setState({ states: data, loaded: true });
       });
   }
 
@@ -29,7 +31,17 @@ class App extends React.Component {
           ></img>
         </div>
 
-        <div className="states"></div>
+        <div className="states">
+          {this.state.loaded
+            ? this.state.states.data.map((uf) => {
+                const imgUrl =
+                  "https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/" +
+                  uf.uf +
+                  ".png";
+                return <State data={uf} imgUrl={imgUrl} key={uf.uid} />;
+              })
+            : null}
+        </div>
       </div>
     );
   }
