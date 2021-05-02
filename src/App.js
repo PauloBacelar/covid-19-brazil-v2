@@ -4,7 +4,17 @@ import "./App.css";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      states: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://covid19-brazil-api.now.sh/api/report/v1")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ states: data });
+      });
   }
 
   render() {
@@ -19,10 +29,7 @@ class App extends React.Component {
           ></img>
         </div>
 
-        <div className="states">
-          <img src="https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/SP.png"></img>
-          <h2>Other data</h2>
-        </div>
+        <div className="states"></div>
       </div>
     );
   }
