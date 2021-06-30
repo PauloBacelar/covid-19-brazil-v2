@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://covid19-brazil-api.now.sh/api/report/v1")
+    fetch("https://covid19-brazil-api.vercel.app/api/report/v1")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ states: data, loaded: true });
