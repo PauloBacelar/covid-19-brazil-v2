@@ -1,12 +1,11 @@
 import React from "react";
 
 function State(props) {
-  console.log(props);
   return (
     <div className="state">
       <h2 className="state-title">
         {props.data.state}&ensp;
-        <img src={props.imgUrl} className="state-flag"></img>
+        <img src={props.imgUrl} className="state-flag" alt="flag state"></img>
       </h2>
       <h3 className="cases">
         Casos &#x1F3E5;: {props.data.cases.toLocaleString()}
